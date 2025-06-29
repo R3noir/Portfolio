@@ -287,79 +287,229 @@
                 <div class="card p-3 rounded-3 mt-3 shadow-lg">
                     <h5>Certificates</h5>
                     <br>
-                    <h5>Coursera</h5>
-                    <div class="d-flex align-items-center shadow">
-                        <img src="img/Coursera-Logo_600x600.svg.png" class="education-logo px-3 py-2" alt="Coursera">
-                        <div class="py-2 pr-2">
-                            <p style="margin: 0;"><strong>Excel Skills for Business: Intermediate II</strong></p>
-                            <small style="margin: 0;"><strong>August 13, 2024</strong></small>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="d-flex align-items-center shadow">
-                        <img src="img/Coursera-Logo_600x600.svg.png" class="education-logo px-3 py-2" alt="Coursera">
-                        <div class="py-2 pr-2">
-                            <p style="margin: 0;"><strong>Excel Skills for Business: Intermediate I</strong></p>
-                            <small style="margin: 0;"><strong>August 9, 2024</strong></small>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="d-flex align-items-center shadow">
-                        <img src="img/Coursera-Logo_600x600.svg.png" class="education-logo px-3 py-2" alt="Coursera">
-                        <div class="py-2 pr-2">
-                            <p style="margin: 0;"><strong>Learn HTML and CSS</strong></p>
-                            <small style="margin: 0;"><strong>December 7, 2023</strong></small>
-                        </div>
-                    </div>
+                    <div id="certificates-row" class="row"></div>
                     <div class="collapse" id="moreCertificates">
-                        <br>
-                        <div class="d-flex align-items-center shadow">
-                            <img src="img/Coursera-Logo_600x600.svg.png" class="education-logo px-3" alt="Coursera">
-                            <div class="py-2 pr-2">
-                                <p style="margin: 0;"><strong>DeepLearning.AI TensorFlow Developer</strong></p>
-                                <small style="margin: 0;"><strong>August 2, 2023</strong></small>
-                                <br>
-                                <small style="margin: 0;">Courses Completed</small>
-                                <li style="margin: 0;"><small>Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning</small></li>
-                                <li style="margin: 0;"><small>Convolutional Neural Networks in TensorFlow</small></li>
-                                <li style="margin: 0;"><small>Natural Language Processing in TensorFlow</small></li>
-                                <li style="margin: 0;"><small>Sequences, Time Series and Prediction</small></li>
-                            </div>
-                        </div>
-                        <br>
-                        <h5>Datacamp</h5>
-                            <div class="d-flex align-items-center shadow">
-                                <img src="img/datacamp-logo-png_seeklogo-456547.png" class="education-logo px-3" alt="Datacamp">
-                                <div class="py-2 pr-2">
-                                    <p style="margin: 0;"><strong>Microsoft Azure Fundamentals (AZ-900) Track</strong></p>
-                                    <small style="margin: 0;"><strong>May 27, 2025</strong></small>
-                                    <br>
-                                    <small style="margin: 0;">Courses Completed</small>
-                                    <li style="margin: 0;"><small>Understandng Cloud Computing</small></li>
-                                    <li style="margin: 0;"><small>Understanding Microsoft Azure</small></li>
-                                    <li style="margin: 0;"><small>Understanding Microsoft Azure Architecture and Services</small></li>
-                                    <li style="margin: 0;"><small>Understanding Microsoft Azure Management and Governance</small></li>
-                                </div>
-                            </div>
-                        <br>
-                        <div class="d-flex align-items-center shadow">
-                            <img src="img/datacamp-logo-png_seeklogo-456547.png" class="education-logo px-3" alt="Datacamp">
-                            <div class="py-2 pr-2">
-                                <p style="margin: 0;"><strong>AI Fundamentals</strong></p>
-                                <small style="margin: 0;"><strong>April 20, 2025</strong></small>
-                            </div>
-                        </div>
+                        <div id="certificates-row-more" class="row mt-3"></div>
                     </div>
                     <br>
-                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#moreCertificates" role="button" aria-expanded="false" aria-controls="moreCertificates">
+                    <a class="btn btn-primary" id="certToggleBtn" data-bs-toggle="collapse" href="#moreCertificates" role="button" aria-expanded="false" aria-controls="moreCertificates">
                         Show More
                     </a>
                 </div>
             </div>
         </div>
     </div>
-
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const certificates = [
+            // Coursera
+            {
+                brand: "Coursera",
+                title: "Excel Skills for Business: Intermediate II",
+                date: "2024-08-13",
+                dateDisplay: "August 13, 2024",
+                img: "img/Coursera-Logo_600x600.svg.png",
+                fullWidth: false
+            },
+            {
+                brand: "Coursera",
+                title: "Excel Skills for Business: Intermediate I",
+                date: "2024-08-09",
+                dateDisplay: "August 9, 2024",
+                img: "img/Coursera-Logo_600x600.svg.png",
+                fullWidth: false
+            },
+            {
+                brand: "Coursera",
+                title: "Learn HTML and CSS",
+                date: "2023-12-07",
+                dateDisplay: "December 7, 2023",
+                img: "img/Coursera-Logo_600x600.svg.png",
+                fullWidth: false
+            },
+            {
+                brand: "Coursera",
+                title: "DeepLearning.AI TensorFlow Developer",
+                date: "2023-08-02",
+                dateDisplay: "August 2, 2023",
+                img: "img/Coursera-Logo_600x600.svg.png",
+                fullWidth: true,
+                details: `
+                    <small style="margin: 0;">Courses Completed</small>
+                    <ul style="margin: 0; padding-left: 1.2em;">
+                        <li><small>Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning</small></li>
+                        <li><small>Convolutional Neural Networks in TensorFlow</small></li>
+                        <li><small>Natural Language Processing in TensorFlow</small></li>
+                        <li><small>Sequences, Time Series and Prediction</small></li>
+                    </ul>
+                `
+            },
+            // Datacamp
+            {
+                brand: "Datacamp",
+                title: "Microsoft Azure Fundamentals (AZ-900) Track",
+                date: "2025-05-27",
+                dateDisplay: "May 27, 2025",
+                img: "img/datacamp-logo-png_seeklogo-456547.png",
+                fullWidth: true,
+                details: `
+                    <small style="margin: 0;">Courses Completed</small>
+                    <ul style="margin: 0; padding-left: 1.2em;">
+                        <li><small>Understandng Cloud Computing</small></li>
+                        <li><small>Understanding Microsoft Azure</small></li>
+                        <li><small>Understanding Microsoft Azure Architecture and Services</small></li>
+                        <li><small>Understanding Microsoft Azure Management and Governance</small></li>
+                    </ul>
+                `
+            },
+            {
+                brand: "Datacamp",
+                title: "AI Fundamentals",
+                date: "2025-04-20",
+                dateDisplay: "April 20, 2025",
+                img: "img/datacamp-logo-png_seeklogo-456547.png",
+                fullWidth: false
+            },
+            //Cisco
+            {
+                brand: "Cisco",
+                title: "AI Fundamentals with IBM SkillsBuild",
+                date: "2025-06-29",
+                dateDisplay: "June 29, 2025",
+                img: "img/ai-fundamentals-with-ibm-skillsbuild.png",
+                fullWidth: false
+            },
+        ];
+
+        // Sort certificates by date descending
+        certificates.sort((a, b) => b.date.localeCompare(a.date));
+
+        // Group by brand
+        const brands = [...new Set(certificates.map(c => c.brand))];
+
+        // How many rows to show before "Show More"
+        const showRows = 4;
+
+        // Split certificates into certsShow and certsMore based on rows, not count
+        function splitCertificatesByRows(certificates, maxRows) {
+            let certsShow = [];
+            let certsMore = [];
+            let rowCount = 0;
+            let i = 0;
+            while (i < certificates.length && rowCount < maxRows) {
+                if (certificates[i].fullWidth) {
+                    certsShow.push(certificates[i]);
+                    rowCount++;
+                    i++;
+                } else {
+                    // Try to fit two half-width certificates in a row
+                    if (
+                        i + 1 < certificates.length &&
+                        !certificates[i + 1].fullWidth
+                    ) {
+                        certsShow.push(certificates[i], certificates[i + 1]);
+                        rowCount++;
+                        i += 2;
+                    } else {
+                        // Only one half-width left or next is fullWidth
+                        certsShow.push(certificates[i]);
+                        rowCount++;
+                        i++;
+                    }
+                }
+            }
+            certsMore = certificates.slice(i);
+            return [certsShow, certsMore];
+        }
+
+        const [certsShow, certsMore] = splitCertificatesByRows(certificates, showRows);
+        const brandsInShow = new Set(certsShow.map(c => c.brand));
+
+        // Render certificates in balanced rows, showing brand header only once per section
+        function renderCertificates(targetId, certs, skipBrands = new Set()) {
+            const container = document.getElementById(targetId);
+            container.innerHTML = '';
+            let brandsRendered = new Set();
+            let i = 0;
+
+            while (i < certs.length) {
+                // Full width certificate
+                if (certs[i].fullWidth) {
+                    if (!skipBrands.has(certs[i].brand) && !brandsRendered.has(certs[i].brand)) {
+                        container.innerHTML += `<div class="col-12 mt-4"><h5>${certs[i].brand}</h5></div>`;
+                        brandsRendered.add(certs[i].brand);
+                    }
+                    container.innerHTML += `
+                        <div class="col-12 mb-3">
+                            <div class="d-flex align-items-center shadow mb-3">
+                                <img src="${certs[i].img}" class="education-logo px-3" alt="${certs[i].brand}">
+                                <div class="py-2 pr-2">
+                                    <p style="margin: 0;"><strong>${certs[i].title}</strong></p>
+                                    <small style="margin: 0;"><strong>${certs[i].dateDisplay}</strong></small>
+                                    <br>
+                                    ${certs[i].details ? certs[i].details : ''}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    i++;
+                } else {
+                    // Prepare a row with up to 2 certificates
+                    let rowHTML = '';
+                    let colCount = 0;
+                    let startIdx = i;
+                    for (; colCount < 2 && i < certs.length && !certs[i].fullWidth; colCount++, i++) {
+                        if (!skipBrands.has(certs[i].brand) && !brandsRendered.has(certs[i].brand)) {
+                            rowHTML += `<div class="col-12 mt-4"><h5>${certs[i].brand}</h5></div>`;
+                            brandsRendered.add(certs[i].brand);
+                        }
+                        rowHTML += `
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center shadow">
+                                    <img src="${certs[i].img}" class="education-logo px-3 py-2" alt="${certs[i].brand}">
+                                    <div class="py-2 pr-2">
+                                        <p style="margin: 0;"><strong>${certs[i].title}</strong></p>
+                                        <small style="margin: 0;"><strong>${certs[i].dateDisplay}</strong></small>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }
+                    container.innerHTML += rowHTML;
+                }
+            }
+        }
+
+        renderCertificates('certificates-row', certsShow);
+        renderCertificates('certificates-row-more', certsMore, brandsInShow);
+
+        // Button text toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            var certBtn = document.getElementById('certToggleBtn');
+            var moreCertificates = document.getElementById('moreCertificates');
+            moreCertificates.addEventListener('show.bs.collapse', function () {
+                certBtn.textContent = 'Show Less';
+            });
+            moreCertificates.addEventListener('hide.bs.collapse', function () {
+                certBtn.textContent = 'Show More';
+            });
+        });
+
+        renderCertificates('certificates-row', certsShow);
+        renderCertificates('certificates-row-more', certsMore, brandsInShow);
+
+        // Button text toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            var certBtn = document.getElementById('certToggleBtn');
+            var moreCertificates = document.getElementById('moreCertificates');
+            moreCertificates.addEventListener('show.bs.collapse', function () {
+                certBtn.textContent = 'Show Less';
+            });
+            moreCertificates.addEventListener('hide.bs.collapse', function () {
+                certBtn.textContent = 'Show More';
+            });
+        });
+    </script>
 </body>
 </html>
